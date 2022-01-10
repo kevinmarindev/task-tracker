@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/todo.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+    <h1>Todos</h1>
+    <a href="/logout">Log Out</a>
+    </header>
+
+    <!-- STARTS NAV-->
+    <nav>
+
+        <div class="dueWhen">
+        <a href="/todos">All Items</a>
+        <a class='todayItems'>Due Today</a>
+        </div>
+
+        <div class="project-container">
+            <form action="/todos/newproject" class='project-form' method="POST">
+            <h3>Add a Project Below</h3>
+            <input type="text" name="projectitem" placeholder="Project Name"></input>
+            <input type="submit" value="Add" ></input>
+            </form>
+        </div>
+         <% if (locals.flash.errors) { %>
+        <% locals.flash.errors.forEach( el => { %>
+             <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %> 
+        <% } %>
+        <ul class="projects">
+         <% pro.forEach( projects => { %>
+                <li data-id='<%=projects._id%>'>
+                    <span class='project-item'><%= projects.project %></span>
+                    <span class="delete-project">X</span>
+                </li>
+        <% }) %> 
+        </ul>
+
+    </nav>
+    <!-- ENDS NAV-->
+
+    <!-- STARTS DISPLAY -->
+    <div class='main-display'>
+    
+    <h2><%= user %> has <%= left %> Things left to do </h2>
+    <h3 class='project-title'></h3>
+
+    <ul class='items-to-display'>
+    
+    <% todos.forEach( el => { %>
+        <li class='todoItem other' data-id='<%=el._id%>'>
+            <span class="check">✓</span>
+            <form   action="/todos/deleteTodo/<%= el._id %>?_method=DELETE" method="POST"  >
+            
+            <button type="submit" style="background: none; border: none; color: red;">⨉</button>
+            </form>
+
+            <span contenteditable='true' class='<%= el.completed === true ? 'completed' : 'not'%> item'><%= el.todo %></span>
+            
+            <!-- <span><% if(el.date) { %> 
+                <%= el.date.getMonth()%>/<%= el.date.getDay()%>/<%= el.date.getFullYear()%> <% } %>
+            </span> -->
+
+            <span id="date" contenteditable="true"><% if(el.date) { %> 
+                <%= el.date.toLocaleDateString('en-US', {timeZone: 'UTC'})%> <% } %>
+            </span>
+            
+         
+            
+        </li>
+    <% }) %>    
+    </ul>
+
+    
+
+    <div class="pullupContainer">
+    <button class="pullup">Add Items</button>
+    </div>
+
+    <div class="popup-main">
+        <div class="popup-inside">
+            <h3>To Do</h3>
+            
+            <form class='submit-item'>
+                <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+                <input type="date" name="date" placeholder="Select Date">
+                
+                <input type="submit">
+            </form>
+
+        </div>    
+    </div>
+
+    </div>
+    <!-- ENDS DISPLAY -->
+    <script src="/javascript/main.js"></script>
+
+</body>
+</html>
