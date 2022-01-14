@@ -1,0 +1,77 @@
+/* *, *:before, *:after {
+    box-sizing: border-box;
+} */
+
+:root{
+    background: url(https://res.cloudinary.com/dpivoqpxh/image/upload/v1643253854/todo-app/last_mpopxc.jpg);
+    /* background-image: radial-gradient(#f4f4f9, #b8dbd9, rgb(211, 230, 233)); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100%;
+    /* border: red solid 2px; */
+    overflow: hidden;
+    
+}
+
+header{
+    height: 10%;
+    display: flex;
+    flex-direction: row-reverse;
+    border-bottom: black solid 3px;
+    opacity: 0.6;
+    
+}
+
+h1{
+    font-size: 50px;
+    
+}
+
+span{
+    font-size: 20px;
+    margin-bottom: 20%;
+}
+
+h2{
+    font-size:22px;
+}
+h3{
+    font-size: 16px;
+}
+a{
+    text-decoration: none;
+    padding: 3vh 3vh 0 1vh;
+    color: white;
+    
+    
+}
+
+a:hover{
+    color: white;
+    transform: scale(1.1);
+}
+div{
+    height: 90%;
+    padding-top: 25vh;
+    padding-bottom: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20%;
+    padding-left: 20%;
+    /* justify-content: center;
+    align-items: flex-start; */
+    
+
+}
+
+@media screen and (max-width: 481px){
+    div{
+        padding-top: 15vh;
+        padding-bottom: 85vh;
+    }
+}
+
+
+

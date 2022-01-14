@@ -1,0 +1,33 @@
+:root{
+    background-image: linear-gradient(to right, #d0dbd0, #ffffff );
+    /* background-image: radial-gradient(#f4f4f9, #b8dbd9, rgb(211, 230, 233)); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100%;
+    /* border: red solid 2px; */
+    overflow: hidden;
+    
+}
+
+form{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+input{
+    margin-left: 20vh;
+    margin-right: 20vh;
+    width: 60vw;
+    margin-bottom: 2%;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.4);
+    height: 3%;
+    font-size: 20px;
+}
+
+
+

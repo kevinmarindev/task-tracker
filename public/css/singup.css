@@ -1,0 +1,25 @@
+:root{
+    background-image: linear-gradient(to right, #d0dbd0, #ffffff );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100%;
+    overflow: hidden;
+    
+} 
+
+form{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+input{
+    width: 40%;
+    margin-bottom: 2%;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.4);
+    height: 3%;
+    font-size: 20px;
+} 
