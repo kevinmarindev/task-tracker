@@ -54,4 +54,4 @@ app.use('/', homeRoutes)
 app.use('/todos', todoRoutes)
 
 
-app.listen(process.env.PORT || 1998)
+app.listen(process.env.PORT)
