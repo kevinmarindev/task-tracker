@@ -314,16 +314,18 @@ function displayItems(objectWithData, project){
         })
 }
 
-async function getTodayItems(){
+function getTodayItems(){
       // console.log(req._startTime)
         let setDate 
         let hour = new Date().getHours()
-        console.log(hour)
-        if(hour == 0){
-            setDate = new Date(new Date().setMinutes(0,0,0)), console.log('this')
+        console.log('yes')
+        console.log(hour, 'now')
+        if(hour < 1){
+            setDate = new Date(new Date().setMinutes(0,0,0))
         }
-        else setDate = new Date(new Date().setHours(0,0,0,0)), console.log('that')
-        console.log(setDate, 'is this working') 
+        if(hour >= 1) setDate = new Date(new Date().setHours(0,0,0,0))
+        
+        console.log(setDate) 
 
     // try {
     //    const response = await fetch(`todos/today/`, {
