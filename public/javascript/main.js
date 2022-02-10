@@ -315,6 +315,18 @@ function displayItems(objectWithData, project){
 }
 
 async function getTodayItems(){
+      // console.log(req._startTime)
+        let setDate 
+        let hour = new Date().getHours()
+        console.log('yes')
+        console.log(hour, 'now')
+        if(hour < 1){
+            setDate = new Date(new Date().setMinutes(0,0,0))
+        }
+        if(hour >= 1) setDate = new Date(new Date().setHours(0,0,0,0))
+        
+        console.log(setDate) 
+
     try {
        const response = await fetch(`todos/today/`, {
                 method: 'get',
@@ -335,4 +347,23 @@ async function getTodayItems(){
         console.log(error)
     
     }
+    
 }
+
+//  let setDate = new Date()
+//         let timezone = setDate.getTimezoneOffset() / 60
+//         console.log(timezone)
+//         let offset = setDate - (setDate.getTimezoneOffset() * 60000)
+//         console.log(new Date(), new Date(offset))
+        // setDate = new Date(new Date(offset).setHours(-6,0,0,0))
+        // let hour = new Date().getHours()
+        // console.log(hour)
+        // if(hour === 0) setDate = new Date(new Date(offset).setMinutes(0,0,0)), console.log('this')
+
+        // if(hour != 0)setDate = new Date(new Date().setHours(`-${timezone}`,0,0,0)), console.log('that')
+        // console.log(setDate)
+        //if time is 0:00 through 0:59 use set minutes (0,0,0) else set hours 
+        
+        // new Date(new Date(offset).setHours(`${timezone > 0 ? '-': timezone.replace('-', '')}${timezone > 0 ? timezone : ''}`,0,0,0))
+        
+        // console.log(setDate, timezone, new Date(new Date().setHours(-6,0,0,0)))
