@@ -225,6 +225,11 @@ h3{
     color: #d22fe7;
 }
 
+input[type=submit], button{
+    background-color: #252b2e;
+    color: white;
+    margin-bottom: 5px;
+}
 /* .popup-inside input:last-child{
     margin-left: 40%;
     margin-right: 40%;

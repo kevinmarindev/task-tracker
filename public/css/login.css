@@ -29,5 +29,11 @@ input{
     font-size: 20px;
 }
 
+input[type=submit], button{
+    background-color: #252b2e;
+    color: white;
+    margin-bottom: 5px;
+}
+
 
 

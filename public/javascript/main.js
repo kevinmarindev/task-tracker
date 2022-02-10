@@ -275,7 +275,8 @@ function displayItems(objectWithData, project){
             let date = document.createElement('span')
             let check = document.createElement('span')
             // let form = document.createElement('form')
-            let x = document.createElement('button')
+            let x = document.createElement('span')
+            x.style.color = 'red'
 
             //creating the delete option
             // form.setAttribute('action', `/todos/deleteTodo/${el._id}?_method=DELETE`)
@@ -314,9 +315,11 @@ function displayItems(objectWithData, project){
         })
 }
 
-function getTodayItems(){
+async function getTodayItems(){
       // console.log(req._startTime)
         let setDate 
+        let timeZone = new Date().getTimezoneOffset() / 60
+        console.log(timeZone)
         let hour = new Date().getHours()
         console.log('yes')
         console.log(hour, 'now')
@@ -325,28 +328,31 @@ function getTodayItems(){
         }
         if(hour >= 1) setDate = new Date(new Date().setHours(0,0,0,0))
         
-        console.log(setDate) 
+        let date2 = setDate.toISOString()
+        const regex = new RegExp(`T0${timeZone}`, 'i')
+        date2 = date2.replace(regex, 'T00')
+        console.log(date2)
 
-    // try {
-    //    const response = await fetch(`todos/today/`, {
-    //             method: 'get',
-    //             headers: {'Content-Type': 'application/json'}
-    //             // body: JSON.stringify({
-    //             // 'project': project      
-    //         //   })
-    //         }) 
-    //         // console.log( await response.json())
-    //         let proccesedResponse = await response.json();
-    //         console.log(proccesedResponse)
+    try {
+       const response = await fetch(`todos/today?date=${date2}`, {
+                method: 'get',
+                headers: {'Content-Type': 'application/json'}
+                // body: JSON.stringify({
+                // 'project': project      
+            //   })
+            }) 
+            // console.log( await response.json())
+            let proccesedResponse = await response.json();
+            console.log(proccesedResponse)
             
-    //         //call fucntion to display response
-    //         // seeProject(project)
-    //         displayItems(proccesedResponse)
+            //call fucntion to display response
+            // seeProject(project)
+            displayItems(proccesedResponse)
 
-    // } catch (error) {
-    //     console.log(error)
+    } catch (error) {
+        console.log(error)
     
-    // }
+    }
     console.log('right branch')
 }
 
