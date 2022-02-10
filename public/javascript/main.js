@@ -320,7 +320,8 @@ function displayItems(objectWithData, project){
 async function getTodayItems(){
       // console.log(req._startTime)
         let setDate 
-        let diff = new Date().getTimezoneOffset()
+        let diff = new Date().getTimezoneOffset() / 60
+        console.log(diff)
         let hour = new Date().getHours()
         console.log('yes')
         console.log(hour, 'now')
