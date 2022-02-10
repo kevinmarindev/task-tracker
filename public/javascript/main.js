@@ -1,3 +1,5 @@
+// const { set } = require("mongoose")
+
 //SELECTORS
 const deleteBtn = document.querySelectorAll('#date')
 const updateItem = document.querySelectorAll('.item')
@@ -318,6 +320,7 @@ function displayItems(objectWithData, project){
 async function getTodayItems(){
       // console.log(req._startTime)
         let setDate 
+        let diff = new Date().getTimezoneOffset()
         let hour = new Date().getHours()
         console.log('yes')
         console.log(hour, 'now')
@@ -326,7 +329,11 @@ async function getTodayItems(){
         }
         if(hour >= 1) setDate = new Date(new Date().setHours(0,0,0,0))
         
-        console.log(setDate) 
+        let dateISO = setDate.toISOString()
+        console.log(dateISO)
+        let regEX = new RegExp(`T0${diff}`, 'i')
+        let date2 = dateISO.replace(regEX, `T00`)
+        console.log(date2)
 
     try {
        const response = await fetch(`todos/today?date=${date2}`, {
