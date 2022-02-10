@@ -19,28 +19,11 @@ module.exports = {
         }
     },
     getDueToday: async(req, res)=>{
-        // console.log(req._startTime)
-        let setDate = new Date()
-        let timezone = setDate.getTimezoneOffset() / 60
-        console.log(timezone)
-        let offset = setDate - (setDate.getTimezoneOffset() * 60000)
-        console.log(new Date(), new Date(offset))
-        // setDate = new Date(new Date(offset).setHours(-6,0,0,0))
-        let hour = new Date().getHours()
-        console.log(hour)
-        if(hour === 0) setDate = new Date(new Date(offset).setMinutes(0,0,0)), console.log('this')
-
-        if(hour != 0)setDate = new Date(new Date().setHours(`-${timezone}`,0,0,0)), console.log('that')
-        console.log(setDate)
-        //if time is 0:00 through 0:59 use set minutes (0,0,0) else set hours 
-        
-        // new Date(new Date(offset).setHours(`${timezone > 0 ? '-': timezone.replace('-', '')}${timezone > 0 ? timezone : ''}`,0,0,0))
-        
-        console.log(setDate, timezone, new Date(new Date().setHours(-6,0,0,0)))
+        console.log(req.query.date)
         try {
-            const toDoitems = await toDoModel.find({date: setDate, userId: req.user.id}
+            const toDoitems = await toDoModel.find({date: req.query.date, userId: req.user.id}
             )
-            const itemsLeft = await toDoModel.countDocuments({date: setDate, userId: req.user.id, completed: false})
+            const itemsLeft = await toDoModel.countDocuments({date: req.query.date, userId: req.user.id, completed: false})
             const projects = await projectsModel.find({userId : req.user.id})
             res.send({todos: toDoitems, left: itemsLeft, user: req.user.userName, pro: projects})
         } catch (error) {

@@ -275,7 +275,8 @@ function displayItems(objectWithData, project){
             let date = document.createElement('span')
             let check = document.createElement('span')
             // let form = document.createElement('form')
-            let x = document.createElement('button')
+            let x = document.createElement('span')
+            x.style.color = 'red'
 
             //creating the delete option
             // form.setAttribute('action', `/todos/deleteTodo/${el._id}?_method=DELETE`)
@@ -328,7 +329,7 @@ async function getTodayItems(){
         console.log(setDate) 
 
     try {
-       const response = await fetch(`todos/today/`, {
+       const response = await fetch(`todos/today?date=${date2}`, {
                 method: 'get',
                 headers: {'Content-Type': 'application/json'}
                 // body: JSON.stringify({
