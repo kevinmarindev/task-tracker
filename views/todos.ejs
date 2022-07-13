@@ -9,17 +9,18 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-    <h1>Todos</h1>
+    <header style="padding-bottom: 10px;">
+    <!-- <h1>Organize your life</h1> -->
     <a href="/logout">Log Out</a>
+    
     </header>
 
     <!-- STARTS NAV-->
     <nav>
 
         <div class="dueWhen">
-        <a href="/todos">All Items</a>
-        <a class='todayItems'>Due Today</a>
+        <a href="/todos" style="font-size: 1.1rem; color: black;">All Items</a>
+        <a class='todayItems' style="font-size: 1.1rem; color: black; font-weight: bold;">Due Today</a>
         </div>
 
         <div class="project-container">
@@ -37,8 +38,8 @@
         <ul class="projects">
          <% pro.forEach( projects => { %>
                 <li data-id='<%=projects._id%>'>
-                    <span class='project-item'><%= projects.project %></span>
-                    <span class="delete-project">X</span>
+                    <span class='project-item' style="cursor: pointer;"><%= projects.project %></span>
+                    <span class="delete-project" style="cursor: pointer;">X</span>
                 </li>
         <% }) %> 
         </ul>
@@ -49,17 +50,17 @@
     <!-- STARTS DISPLAY -->
     <div class='main-display'>
     
-    <h2><%= user %> has <%= left %> Things left to do </h2>
-    <h3 class='project-title'></h3>
+        <h2 class='project-title'></h2>
+        <h3 style="margin-left: 35px;"><%= left %> Things left to do on this list</h3>
 
     <ul class='items-to-display'>
     
     <% todos.forEach( el => { %>
         <li class='todoItem other' data-id='<%=el._id%>'>
-            <span class="check">✓</span>
+            <span class="check" style="cursor: pointer;">✓</span>
             <form   action="/todos/deleteTodo/<%= el._id %>?_method=DELETE" method="POST"  >
             
-            <button type="submit" style="background: none; border: none; color: red;">⨉</button>
+            <button type="submit" style="background: none; border: none; color: red;cursor: pointer;">⨉</button>
             </form>
 
             <span contenteditable='true' class='<%= el.completed === true ? 'completed' : 'not'%> item'><%= el.todo %></span>
@@ -68,7 +69,7 @@
                 <%= el.date.getMonth()%>/<%= el.date.getDay()%>/<%= el.date.getFullYear()%> <% } %>
             </span> -->
 
-            <span id="date" contenteditable="true"><% if(el.date) { %> 
+            <span id="date" contenteditable="false" style="cursor: default;"><% if(el.date) { %> 
                 <%= el.date.toLocaleDateString('en-US', {timeZone: 'UTC'})%> <% } %>
             </span>
             

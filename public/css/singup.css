@@ -28,4 +28,12 @@ input[type=submit], button{
     background-color: #252b2e;
     color: white;
     margin-bottom: 5px;
+    width: auto;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 890px){
+    input[type=submit]{
+        width: 12vw;
+    }
 }

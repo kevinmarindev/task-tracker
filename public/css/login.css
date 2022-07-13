@@ -33,6 +33,18 @@ input[type=submit], button{
     background-color: #252b2e;
     color: white;
     margin-bottom: 5px;
+    width: 18vw;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 890px){
+
+    input{
+        width: 45vw;
+    }
+    input[type=submit]{
+        width: 12vw;
+    }
 }
 
 

@@ -58,7 +58,7 @@ nav .dueWhen{
     cursor: pointer;
 }
 
-.dueWhen a:hover{
+.dueWhen a:hover, a:hover{
     transform: scale(1.1);
 }
 
@@ -72,6 +72,7 @@ nav .project-container{
 nav .projects{
     padding-left: 2%;
     font-size: 20px;
+    
 }
 
 nav ul{
@@ -80,6 +81,7 @@ nav ul{
     flex-direction: row;
     justify-content:left;
     flex-wrap: wrap;
+    
 }
 
 nav ul li{
@@ -88,9 +90,17 @@ nav ul li{
     padding-bottom: 2%;
     display: flex;
     flex-wrap: nowrap;
+    cursor: pointer;
     /* text-overflow: ellipsis; */
     
     /* border: solid black 1px; */
+}
+
+
+
+nav ul li span{
+    cursor: pointer;
+    color: black;
 }
 
 
@@ -108,12 +118,18 @@ nav ul li{
     
 }
 
+h1{
+    cursor: default;
+}
+
 h2{
     padding-left: 2%;
+    cursor: default;
 }
 
 h3{
     padding-left: 1%;
+    cursor: default;
 }
 
 .items-to-display{
@@ -135,9 +151,9 @@ h3{
     font-size: 18px;
 }
 
-.items-to-display li:hover{
-    transform: scale(1.03);
-}
+/* .items-to-display li:hover{
+    font-weight: bold;
+} */
 
 .items-to-display li:nth-child(odd){
     background-color: #c4c4ce;
@@ -222,13 +238,18 @@ h3{
 }
 
 .check{
-    color: #d22fe7;
+    color: #252b2e;
 }
 
 input[type=submit], button{
     background-color: #252b2e;
     color: white;
     margin-bottom: 5px;
+    cursor: pointer;
+}
+
+div a{
+    font-size: 1.1rem; color: black; font-weight: bold;
 }
 /* .popup-inside input:last-child{
     margin-left: 40%;

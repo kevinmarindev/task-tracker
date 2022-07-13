@@ -21,7 +21,7 @@ module.exports = {
     getDueToday: async(req, res)=>{
         console.log(req.query.date)
         try {
-            const toDoitems = await toDoModel.find({date: req.query.date, userId: req.user.id}
+            const toDoitems = await toDoModel.find({ date: { $lte: req.query.date }, userId: req.user.id}
             )
             const itemsLeft = await toDoModel.countDocuments({date: req.query.date, userId: req.user.id, completed: false})
             const projects = await projectsModel.find({userId : req.user.id})

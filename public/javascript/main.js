@@ -244,9 +244,10 @@ async function deleteOne(){
 }
 
 async function deleteProject(){
+    console.log('ok')
     let projectId = this.parentNode.dataset.id
     let project = this.parentNode.childNodes[1].innerText
-    console.log(project, projectId)
+    console.log('yes', project, projectId)
     try {
         const response = await fetch(`todos/deleteProject`, {
                 method: 'delete',
@@ -265,11 +266,17 @@ async function deleteProject(){
 function displayItems(objectWithData, project){
     console.log(objectWithData, project)
 
-    document.querySelector('.main-display h2').innerText = `${objectWithData.left}  items left to do in this Project`;
+    document.querySelector('.main-display h3').innerText = `${objectWithData.left}  items left to do in this Project`;
+
+    document.querySelector('.main-display h3').style.marginLeft = '35px';
+
     projectTitle.innerText = project || '';
     console.log(itemsToDisplay)
-    
+
+    // projectTitle.style.color = 'red'
+
     itemsToDisplay.textContent = '';
+
     objectWithData.todos.forEach( el => { 
             //creating elements 
             let li = document.createElement('li')
@@ -279,6 +286,8 @@ function displayItems(objectWithData, project){
             // let form = document.createElement('form')
             let x = document.createElement('span')
             x.style.color = 'red'
+            x.style.cursor = 'pointer'
+            check.style.cursor = 'pointer'
 
             //creating the delete option
             // form.setAttribute('action', `/todos/deleteTodo/${el._id}?_method=DELETE`)
